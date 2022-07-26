@@ -218,6 +218,26 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -131072, 6, 0, -131071, 6, 0, -131070, 6, 0, -131069, 6, 0, -131068, 6, 0, -131067, 6, 0, -131066, 6, 0, -131065, 6, 0, 65535, 10, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 131071, 10, 0, 65536, 0, 0, 65537, 0, 0, 65538, 1, 0, 65539, 2, 0, 65540, 4, 0, 65541, 2, 0, 65542, 0, 0, 65543, 0, 0, 196607, 10, 0, 131072, 0, 0, 131073, 0, 0, 131074, 2, 0, 131075, 4, 0, 131076, 4, 0, 131077, 2, 0, 131078, 1, 0, 131079, 0, 0, 262143, 10, 0, 196608, 0, 0, 196609, 0, 0, 196610, 4, 0, 196611, 4, 0, 196612, 4, 0, 196613, 2, 0, 196614, 2, 0, 196615, 0, 0, 327679, 10, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 5, 0, 262151, 0, 0, 393215, 10, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 3, 0 )
 
+[node name="things" type="Node2D" parent="."]
+
+[node name="thing2" parent="things" instance=ExtResource( 5 )]
+position = Vector2( 40, 24 )
+
+[node name="thing3" parent="things" instance=ExtResource( 5 )]
+position = Vector2( 24, 40 )
+
+[node name="thing4" parent="things" instance=ExtResource( 5 )]
+position = Vector2( 40, 40 )
+
+[node name="thing5" parent="things" instance=ExtResource( 5 )]
+position = Vector2( 24, 56 )
+
+[node name="thing6" parent="things" instance=ExtResource( 5 )]
+position = Vector2( 40, 56 )
+
+[node name="thing" parent="things" instance=ExtResource( 5 )]
+position = Vector2( 24, 24 )
+
 [node name="Player" type="KinematicBody2D" parent="."]
 script = ExtResource( 4 )
 
@@ -246,21 +266,3 @@ anims/swing = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-
-[node name="thing" parent="." instance=ExtResource( 5 )]
-position = Vector2( 24, 24 )
-
-[node name="thing" parent="thing" instance=ExtResource( 5 )]
-position = Vector2( 16, 0 )
-
-[node name="thing2" parent="thing" instance=ExtResource( 5 )]
-position = Vector2( 0, 16 )
-
-[node name="thing3" parent="thing" instance=ExtResource( 5 )]
-position = Vector2( 16, 16 )
-
-[node name="thing4" parent="thing" instance=ExtResource( 5 )]
-position = Vector2( 0, 32 )
-
-[node name="thing5" parent="thing" instance=ExtResource( 5 )]
-position = Vector2( 16, 32 )
