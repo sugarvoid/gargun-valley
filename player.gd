@@ -1,24 +1,19 @@
 extends KinematicBody2D
 
-export (int) var speed = 200
-
-var velocity = Vector2()
+var speed: int = 100
+var velocity = Vector2.ZERO
 
 func get_input():
-	velocity = Vector2()
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
-	velocity = velocity.normalized() * speed
+	var direction: Vector2 = Vector2(
+		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
+		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	)
+	if direction.length() > 1.0:
+		direction = direction.normalized()
+	move_and_slide(speed * direction)
 
 func _physics_process(delta):
 	$Sprite/Hand/Weapon.look_at(get_global_mouse_position())
-	
 	get_input()
 	velocity = move_and_slide(velocity)
 	
