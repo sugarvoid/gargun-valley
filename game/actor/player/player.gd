@@ -30,18 +30,20 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("switch_mode"):
 		Global.toggle_player_mode()
 
-func _on_InteractionArea_area_entered(area: Crop) -> void:
-	if area.is_in_group('Crop'):
+func _on_InteractionArea_area_entered(area: InteractiveObject) -> void:
+	if area.is_in_group('InteractiveObject'):
 		area.turn_on()
 
 func _handle_mode() -> void:
 	match Global.player_mode:
 		Global.PLAY_MODES.FARMER:
 			pass
+			# change item in hand
 		Global.PLAY_MODES.SHOOTER:
 			pass
+			# change item in hand
 
 
-func _on_InteractionArea_area_exited(area: Crop) -> void:
-	if area.is_in_group('Crop'):
+func _on_InteractionArea_area_exited(area: InteractiveObject) -> void:
+	if area.is_in_group('InteractiveObject'):
 		area.turn_off()

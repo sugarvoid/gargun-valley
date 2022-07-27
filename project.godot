@@ -9,24 +9,43 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area2D",
+"base": "Item",
 "class": "Crop",
 "language": "GDScript",
-"path": "res://crop.gd"
+"path": "res://game/item/crop/crop.gd"
+}, {
+"base": "Area2D",
+"class": "InteractiveObject",
+"language": "GDScript",
+"path": "res://game/interactive_object/interactive_object.gd"
+}, {
+"base": "Area2D",
+"class": "Item",
+"language": "GDScript",
+"path": "res://game/item/item.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://game/actor/player/player.gd"
+}, {
+"base": "InteractiveObject",
+"class": "Plot",
+"language": "GDScript",
+"path": "res://game/interactive_object/plot/plot.gd"
 } ]
 _global_script_class_icons={
 "Crop": "",
-"Player": ""
+"InteractiveObject": "",
+"Item": "",
+"Player": "",
+"Plot": ""
 }
 
 [application]
 
 config/name="gargun valley"
+run/main_scene="res://game/Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]

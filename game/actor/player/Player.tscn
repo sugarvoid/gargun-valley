@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://sprite.png" type="Texture" id=1]
+[ext_resource path="res://game/actor/player/sprite.png" type="Texture" id=1]
 [ext_resource path="res://weapon_hammer.png" type="Texture" id=2]
 [ext_resource path="res://game/actor/player/player.gd" type="Script" id=3]
 
