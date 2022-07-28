@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://csd2ek5gbnvvl"]
+[gd_scene load_steps=8 format=3 uid="uid://csd2ek5gbnvvl"]
 
 [ext_resource type="PackedScene" uid="uid://dho6rhw27site" path="res://game/actor/player/Player.tscn" id="1"]
+[ext_resource type="Script" path="res://game/gaem.gd" id="1_1r305"]
 [ext_resource type="PackedScene" uid="uid://cg7xfsj7eivug" path="res://game/interface/hud/HUD.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bpwk1awaauod2" path="res://game/interactive_object/plot/Plot.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://ojgqpd6m400i" path="res://tiltmap.png" id="4"]
@@ -230,6 +231,9 @@ terrain_set_0/mode = 0
 sources/0 = SubResource("TileSetAtlasSource_qsgng")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_1r305")
+
+[node name="HUD" parent="." instance=ExtResource("2")]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, -2)
@@ -258,5 +262,3 @@ position = Vector2(40, 22)
 position = Vector2(40, 38)
 
 [node name="Player" parent="." instance=ExtResource("1")]
-
-[node name="HUD" parent="." instance=ExtResource("2")]

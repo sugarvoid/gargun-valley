@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://conf56y7otb81"]
+
+[ext_resource type="Texture2D" uid="uid://dm77xn2iq8v7s" path="res://game/weapon/new_one_1.png" id="1_474yd"]
+
+[node name="Weapon" type="Sprite2D"]
+scale = Vector2(1, 0.992688)
+texture = ExtResource("1_474yd")
+offset = Vector2(5.179, -1.285)
+region_enabled = true
+region_rect = Rect2(137, 2, 16, 7)

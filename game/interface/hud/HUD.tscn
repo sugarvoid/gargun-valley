@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cg7xfsj7eivug"]
 
 [ext_resource type="Script" path="res://game/interface/hud/hud.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://b0lmy6gbdqtcy" path="res://game/interface/icons8-farm-64.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://baurpvtj787se" path="res://game/interface/play_mode_icon.png" id="2_ie4bn"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1")
@@ -11,11 +11,7 @@ offset_right = 81.0
 offset_bottom = 26.0
 text = "gfhfghgfhf"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -64.0
-texture = ExtResource("2")
+[node name="PlayModeIcon" type="Sprite2D" parent="."]
+position = Vector2(968, 540)
+texture = ExtResource("2_ie4bn")
+hframes = 2

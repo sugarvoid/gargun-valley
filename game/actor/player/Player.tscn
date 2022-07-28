@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dho6rhw27site"]
+[gd_scene load_steps=8 format=3 uid="uid://dho6rhw27site"]
 
 [ext_resource type="Texture2D" uid="uid://bfy8s8103b5ch" path="res://game/actor/player/sprite.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://btao572nss4du" path="res://weapon_hammer.png" id="2"]
 [ext_resource type="Script" path="res://game/actor/player/player.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://conf56y7otb81" path="res://game/weapon/Weapon.tscn" id="3_hf05t"]
 
 [sub_resource type="Animation" id="2"]
 resource_name = "idle"
@@ -30,26 +30,6 @@ _data = {
 radius = 4.0
 height = 8.0
 
-[sub_resource type="Animation" id="4"]
-resource_name = "swing"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(8.128, -1.414), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b6b72"]
-_data = {
-"swing": SubResource("4")
-}
-
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(15, 14)
 
@@ -73,16 +53,9 @@ vframes = 3
 frame = 6
 
 [node name="Hand" type="Position2D" parent="Sprite"]
-position = Vector2(3.623, 6.993)
+position = Vector2(2.542, 8.523)
 
-[node name="Weapon" type="Sprite2D" parent="Sprite/Hand"]
-scale = Vector2(1, 0.992688)
-texture = ExtResource("2")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite/Hand/Weapon"]
-libraries = {
-"": SubResource("AnimationLibrary_b6b72")
-}
+[node name="Weapon" parent="Sprite/Hand" instance=ExtResource("3_hf05t")]
 
 [node name="InteractionArea" type="Area2D" parent="."]
 
