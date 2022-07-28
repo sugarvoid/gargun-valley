@@ -2,7 +2,7 @@ extends InteractiveObject
 class_name Plot
 
 var has_crop: bool
-
+var texture: Texture
 var crop: Crop
 
 export var days_growing: int 

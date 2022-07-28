@@ -1,8 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/actor/player/sprite.png" type="Texture" id=1]
-[ext_resource path="res://weapon_hammer.png" type="Texture" id=2]
+[ext_resource path="res://game/weapon/Weapon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/actor/player/player.gd" type="Script" id=3]
+[ext_resource path="res://game/light_test.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 6.0
@@ -19,37 +20,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "swing"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 157.4, 0.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 8.128, -1.414 ), Vector2( 0, 0 ) ]
+"values": [ 0 ]
 }
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -62,24 +36,19 @@ script = ExtResource( 3 )
 position = Vector2( 0, 4 )
 shape = SubResource( 3 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
+anims/idle = SubResource( 2 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/idle = SubResource( 2 )
-
 [node name="Hand" type="Position2D" parent="Sprite"]
-position = Vector2( 3.623, 6.993 )
+position = Vector2( 1.956, 8.324 )
 
-[node name="Weapon" type="Sprite" parent="Sprite/Hand"]
-position = Vector2( 1.377, -4.993 )
-scale = Vector2( 1, 0.992688 )
-texture = ExtResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite/Hand/Weapon"]
-anims/swing = SubResource( 4 )
+[node name="Weapon" parent="Sprite/Hand" instance=ExtResource( 2 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -90,5 +59,12 @@ current = true
 position = Vector2( 11, 5 )
 shape = SubResource( 5 )
 
+[node name="ClickTimer" type="Timer" parent="."]
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 4 )
+energy = 0.8
+
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_InteractionArea_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_InteractionArea_area_exited"]
+[connection signal="timeout" from="ClickTimer" to="." method="_on_ClickTimer_timeout"]
