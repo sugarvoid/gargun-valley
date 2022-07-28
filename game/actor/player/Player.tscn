@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dho6rhw27site"]
+[gd_scene load_steps=9 format=3 uid="uid://dho6rhw27site"]
 
 [ext_resource type="Texture2D" uid="uid://bfy8s8103b5ch" path="res://game/actor/player/sprite.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://b1t0u5xr6e5rw" path="res://game/light_test.png" id="2_7o8nk"]
 [ext_resource type="Script" path="res://game/actor/player/player.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://conf56y7otb81" path="res://game/weapon/Weapon.tscn" id="3_hf05t"]
 
@@ -68,6 +69,9 @@ current = true
 zoom = Vector2(3, 3)
 
 [node name="ClickTimer" type="Timer" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("2_7o8nk")
 
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_InteractionArea_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_InteractionArea_area_exited"]
