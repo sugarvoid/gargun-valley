@@ -4,7 +4,7 @@ extends CanvasLayer
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-onready var time_label: Label = get_node("TimeLabel")
+@onready var time_label: Label = get_node("TimeLabel")
 
 
 # Called when the node enters the scene tree for the first time.

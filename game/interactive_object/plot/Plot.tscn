@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://bpwk1awaauod2"]
 
-[ext_resource path="res://game/interactive_object/InteractiveObject.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/interactive_object/plot/plot.gd" type="Script" id=2]
+[ext_resource type="PackedScene" path="res://game/interactive_object/InteractiveObject.tscn" id="1"]
+[ext_resource type="Script" path="res://game/interactive_object/plot/plot.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dqqygh53elgcl" path="res://game/interactive_object/plot/blue_plot.png" id="3_t4agp"]
 
-[node name="Plot" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="Plot" instance=ExtResource("1")]
+script = ExtResource("2")
+days_growing = null
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("3_t4agp")
+hframes = 5
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0)
