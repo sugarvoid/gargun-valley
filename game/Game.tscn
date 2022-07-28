@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://csd2ek5gbnvvl"]
 
 [ext_resource type="PackedScene" uid="uid://dho6rhw27site" path="res://game/actor/player/Player.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://game/interface/hud/HUD.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://cg7xfsj7eivug" path="res://game/interface/hud/HUD.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bpwk1awaauod2" path="res://game/interactive_object/plot/Plot.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://ojgqpd6m400i" path="res://tiltmap.png" id="4"]
 

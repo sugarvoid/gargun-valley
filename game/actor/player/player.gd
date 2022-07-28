@@ -24,8 +24,10 @@ func _ready() -> void:
 func get_input():
 	var input = Vector2()
 	if Input.is_action_pressed('move_right'):
+
 		input.x += 1
 	if Input.is_action_pressed('move_left'):
+
 		input.x -= 1
 	if Input.is_action_pressed('move_down'):
 		input.y += 1
@@ -42,6 +44,7 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, friction)
 	move_and_slide()
+	
 
 
 

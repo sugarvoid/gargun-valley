@@ -70,7 +70,7 @@ shape = SubResource("3")
 texture = ExtResource("1")
 hframes = 4
 vframes = 3
-frame = 4
+frame = 6
 
 [node name="Hand" type="Position2D" parent="Sprite"]
 position = Vector2(3.623, 6.993)
