@@ -3,11 +3,14 @@ extends Node2D
 
 onready var p_Projectile: PackedScene = preload("res://game/projectile/Projectile.tscn")
 
-
 onready var hud: CanvasLayer = get_node("HUD")
 onready var clock: GameClock = get_node("GameClock")
 onready var player: Player = get_node("Player")
 
+const dawn_color: Color = Color("141d35")
+const night_color: Color = Color("000000")
+const evening_color: Color = Color("341818")
+const day_color: Color = Color.white
 
 func _ready() -> void:
 	self.player.connect("on_play_mode_toggle", self, "_toggle_mode_icon")
@@ -20,13 +23,12 @@ func _input(event):
 
 func _make_bullet(muzzle: Node2D) -> void:
 	var bullet = p_Projectile.instance()
-	bullet.transform = muzzle.transform
-	bullet.position = muzzle.global_position
+	bullet.global_transform = muzzle.global_transform
 	$BulletContainer.add_child(bullet)
-	var target = get_global_mouse_position()
-	var dir_to_mouse = bullet.global_position.direction_to(target).normalized()
-	bullet.direction = dir_to_mouse
 
 func _toggle_mode_icon():
 	hud.toggle_icon()
 
+func _change_sky_color(start: Color, end: Color) -> void:
+	$CanvasModulate/Tween.interpolate_property($CanvasModulate, "color", start, end, 3.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$CanvasModulate/Tween.start()

@@ -1,23 +1,21 @@
 extends KinematicBody2D
 class_name Player
 
-var move_speed: float = 65
-var velocity = Vector2.ZERO
-var mode: int
-
-var click_recharge_time: float = 2.0
-var can_click: bool = true
-var is_facing_right: bool = true
-
-onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
-export var friction = 0.1
-export var acceleration = 0.1
-
-
-
 signal is_over_crop
 signal on_play_mode_toggle
 signal on_weapon_fired_pressed
+
+onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
+
+var move_speed: float = 65
+var velocity = Vector2.ZERO
+var mode: int
+var click_recharge_time: float = 2.0
+var can_click: bool = true
+var is_facing_right: bool = true
+var friction = 0.1
+var acceleration = 0.1
+
 
 func _ready() -> void:
 	self.animation_player.play("idle")
@@ -28,7 +26,6 @@ func _get_input():
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	)
 	return input
-
 
 func _physics_process(delta):
 	_handle_mode()
@@ -43,7 +40,7 @@ func _move(direction: Vector2) -> void:
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, friction)
 	velocity = move_and_slide(velocity)
-	
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("click"):
 		shoot() #move later

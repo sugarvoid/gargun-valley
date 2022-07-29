@@ -63,7 +63,7 @@ shape = SubResource( 5 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 4 )
-texture_scale = 0.4
+texture_scale = 0.2
 energy = 0.8
 
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_InteractionArea_area_entered"]
