@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/item/crop/crop.gd"
 }, {
+"base": "Node",
+"class": "GameClock",
+"language": "GDScript",
+"path": "res://game/manager/game_clock.gd"
+}, {
 "base": "Area2D",
 "class": "InteractiveObject",
 "language": "GDScript",
@@ -36,6 +41,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Crop": "",
+"GameClock": "",
 "InteractiveObject": "",
 "Item": "",
 "Player": "",

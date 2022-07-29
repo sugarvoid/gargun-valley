@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name Player
 
-var move_speed: int = 100
+var move_speed: float = 65
 var velocity = Vector2.ZERO
 var mode: int
 
@@ -17,6 +17,7 @@ export var acceleration = 0.1
 
 signal is_over_crop
 signal on_play_mode_toggle
+signal on_weapon_fired_pressed
 
 func _ready() -> void:
 	self.animation_player.play("idle")
@@ -45,6 +46,7 @@ func _move(direction: Vector2) -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("click"):
+		shoot() #move later
 		if can_click:
 			can_click = false
 			$ClickTimer.start(self.click_recharge_time)
@@ -53,8 +55,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		Global.toggle_player_mode()
 
 func _on_InteractionArea_area_entered(area: InteractiveObject) -> void:
+	if area != InteractiveObject: 
+		return
 	if area.is_in_group('InteractiveObject'):
 		area.turn_on()
+	else: pass
 
 func _handle_mode() -> void:
 	match Global.player_mode:
@@ -76,12 +81,16 @@ func flip(object_loc: Vector2):
 			is_facing_right = true
 
 func _on_InteractionArea_area_exited(area: InteractiveObject) -> void:
+	if area != InteractiveObject: 
+		return
 	if area.is_in_group('InteractiveObject'):
 		area.turn_off()
 
 func shoot() -> void:
-	$Hand/Weapon.spawn_bullet()
-	pass
+	# get current weapon info
+	# Send signal to bullet factory
+	print('pew pew')
+	self.emit_signal("on_weapon_fired_pressed", $Hand/Weapon/Muzzle)
 
 func _on_ClickTimer_timeout() -> void:
 	self.can_click = true

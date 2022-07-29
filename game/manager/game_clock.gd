@@ -1,10 +1,17 @@
 extends Node
+class_name GameClock
 
+signal _on_the_day
+signal _on_the_hour
+signal _on_the_week
+signal _on_the_minunte
+
+onready var timer: Timer = get_node("Timer")
 
 # One in-game min = ten second 
-const MIN_LENGTH = 10
+const MIN_LENGTH = 5
 
-var mintune: int = 0 
+var minunte: int = 0 
 var hour: int = 0
 
 var day = 1
@@ -13,8 +20,6 @@ var year: int = 1999
 var current_day_of_week: int = 0
 
 var is_paused: bool = false
-
-var timer: Timer
 
 
 const DAYS: Array = [
@@ -44,7 +49,7 @@ func advance_month() -> void:
 
 func advance_day():
 	if current_day_of_week == 6:
-		### Signals.emit_signal("_new_week")
+		emit_signal("_on_the_week")
 		print('new week')
 		current_day_of_week = 0
 	else:
@@ -54,23 +59,14 @@ func get_day_string():
 	return DAYS[current_day_of_week]
 
 func advance_hour():
-	##### Signals.emit_signal("_on_the_hour")
+	emit_signal("_on_the_hour")
 	if hour == 23:
 		hour = 0
 		advance_day()
 	else:
 		hour = hour + 1
 
-
 func _ready() -> void:
-	timer = Timer.new()
-	# warning-ignore:return_value_discarded
-	timer.connect("timeout", self, "_on_timer_timeout") 
-	# timer.set_wait_time(MIN_LENGTH) #value is in seconds: 600 seconds = 10 minutes
-	add_child(timer) 
-	timer.start() 
-	
-	
 	_start_ticker()
 
 func _start_ticker():
@@ -92,17 +88,18 @@ func pause_time():
 	self.is_paused = true
 
 func tick():
-	mintune = mintune + 1
-	if mintune == 60:
+	minunte = minunte + 1
+	self.emit_signal("_on_the_minunte", get_time())
+	if minunte == 60:
 		advance_hour()
-		mintune = 0
+		minunte = 0
 
 func get_time() -> String:
-	return "{0}:{1}".format([str(hour).pad_zeros(2),str(mintune).pad_zeros(2)])
+	return "{0}:{1}".format([str(hour).pad_zeros(2),str(minunte).pad_zeros(2)])
 
 func get_date() -> String:
 	return "{0}/{1}/{2}".format([month, str(day).pad_zeros(2), year])
 
-func _on_timer_timeout() -> void:
+func _on_Timer_timeout() -> void:
 	tick()
-
+	print("tick")

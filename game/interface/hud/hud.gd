@@ -17,3 +17,6 @@ func toggle_icon() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func update_time(time: String) -> void:
+	$TimeLabel.text = time
