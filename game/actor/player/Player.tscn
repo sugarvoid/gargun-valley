@@ -61,7 +61,7 @@ shape = SubResource( 5 )
 
 [node name="ClickTimer" type="Timer" parent="."]
 
-[node name="Light2D" type="Light2D" parent="."]
+[node name="Light" type="Light2D" parent="."]
 texture = ExtResource( 4 )
 texture_scale = 0.2
 energy = 0.8

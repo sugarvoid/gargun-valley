@@ -4,7 +4,7 @@ extends Node2D
 onready var p_Projectile: PackedScene = preload("res://game/projectile/Projectile.tscn")
 
 onready var hud: CanvasLayer = get_node("HUD")
-onready var clock: GameClock = get_node("GameClock")
+onready var time_manager: TimeManager = get_node("TimeManager")
 onready var player: Player = get_node("Player")
 
 const dawn_color: Color = Color("141d35")
@@ -12,12 +12,13 @@ const night_color: Color = Color("000000")
 const evening_color: Color = Color("341818")
 const day_color: Color = Color.white
 
+
 func _ready() -> void:
 	self.player.connect("on_play_mode_toggle", self, "_toggle_mode_icon")
 	self.player.connect("on_weapon_fired_pressed", self, "_make_bullet")
-	self.clock.connect("_on_the_minunte", self.hud, "update_time")
+	self.time_manager.connect("_on_the_minunte", self.hud, "update_time")
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 

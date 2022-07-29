@@ -10,7 +10,7 @@
 [ext_resource path="res://game/Modern_Exteriors_Singles_Shop_Market_10.png" type="Texture" id=8]
 [ext_resource path="res://SunnysideWorld_Tileset_V0.1.png" type="Texture" id=9]
 [ext_resource path="res://map.png" type="Texture" id=10]
-[ext_resource path="res://game/manager/GameClock.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game/manager/TimeManager.tscn" type="PackedScene" id=11]
 
 [sub_resource type="TileSet" id=2]
 0/name = "SunnysideWorld_Tileset_V0.1.png 0"
@@ -229,7 +229,7 @@
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="GameClock" parent="." instance=ExtResource( 11 )]
+[node name="TimeManager" parent="." instance=ExtResource( 11 )]
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -290,6 +290,5 @@ position = Vector2( 192, 32 )
 texture = ExtResource( 8 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.203922, 0.0941176, 0.0941176, 1 )
 
 [node name="Tween" type="Tween" parent="CanvasModulate"]

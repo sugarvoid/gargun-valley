@@ -14,10 +14,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/item/crop/crop.gd"
 }, {
-"base": "Node",
-"class": "GameClock",
+"base": "Reference",
+"class": "DateTime",
 "language": "GDScript",
-"path": "res://game/manager/game_clock.gd"
+"path": "res://game/manager/date_time.gd"
 }, {
 "base": "Area2D",
 "class": "InteractiveObject",
@@ -38,14 +38,20 @@ _global_script_classes=[ {
 "class": "Plot",
 "language": "GDScript",
 "path": "res://game/interactive_object/plot/plot.gd"
+}, {
+"base": "Node",
+"class": "TimeManager",
+"language": "GDScript",
+"path": "res://game/manager/time_manager.gd"
 } ]
 _global_script_class_icons={
 "Crop": "",
-"GameClock": "",
+"DateTime": "",
 "InteractiveObject": "",
 "Item": "",
 "Player": "",
-"Plot": ""
+"Plot": "",
+"TimeManager": ""
 }
 
 [application]
@@ -121,6 +127,11 @@ move_left={
 move_right={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+light_toggle={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

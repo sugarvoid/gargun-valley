@@ -1,25 +1,34 @@
 extends Node
-class_name GameClock
+class_name TimeManager
 
 signal _on_the_day
 signal _on_the_hour
 signal _on_the_week
 signal _on_the_minunte
 
+
+
 onready var timer: Timer = get_node("Timer")
 
 # One in-game min = ten second 
-const MIN_LENGTH = 5
+const MIN_LENGTH: int = 5
 
 var minunte: int = 0 
 var hour: int = 0
-
-var day = 1
-var month = 1
+var day: int = 1
+var month: int = 1
 var year: int = 1999
 var current_day_of_week: int = 0
 
 var is_paused: bool = false
+
+enum PHASES {
+	DAWN,
+	MORNING,
+	AFTERNOON,
+	EVENING,
+	NIGHT
+}
 
 
 const DAYS: Array = [
@@ -99,6 +108,18 @@ func get_time() -> String:
 
 func get_date() -> String:
 	return "{0}/{1}/{2}".format([month, str(day).pad_zeros(2), year])
+
+func _init():
+	pass
+	
+
+	
+func set_date():
+	pass
+	
+	
+func add_days(days: int):
+	self.day += days
 
 func _on_Timer_timeout() -> void:
 	tick()

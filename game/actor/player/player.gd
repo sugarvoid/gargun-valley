@@ -47,9 +47,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		if can_click:
 			can_click = false
 			$ClickTimer.start(self.click_recharge_time)
+	
 	if event.is_action_released("switch_mode"):
 		emit_signal("on_play_mode_toggle")
 		Global.toggle_player_mode()
+	
+	if event.is_action_released("light_toggle"):
+		$Light.enabled = 1 - int($Light.enabled)
 
 func _on_InteractionArea_area_entered(area: InteractiveObject) -> void:
 	if area != InteractiveObject: 
