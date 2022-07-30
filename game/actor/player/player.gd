@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Actor
 class_name Player
 
 signal is_over_crop
@@ -7,14 +7,12 @@ signal on_weapon_fired_pressed
 
 onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 
-var move_speed: float = 65
-var velocity = Vector2.ZERO
 var mode: int
 var click_recharge_time: float = 2.0
 var can_click: bool = true
-var is_facing_right: bool = true
 var friction = 0.1
 var acceleration = 0.1
+var mouse_location: Vector2
 
 
 func _ready() -> void:
@@ -29,7 +27,7 @@ func _get_input():
 
 func _physics_process(delta):
 	_handle_mode()
-	self.flip(get_local_mouse_position())
+	self.handle_sprite_direction(get_local_mouse_position())
 	$InteractionArea.monitoring = self.can_click
 	$Hand/Weapon.look_at(get_global_mouse_position())
 	_move(_get_input())
@@ -70,16 +68,6 @@ func _handle_mode() -> void:
 		Global.PLAY_MODES.SHOOTER:
 			pass
 			# change item in hand
-
-func flip(object_loc: Vector2):
-	if object_loc.x < 0:
-		if is_facing_right:
-			scale.x = -1
-			is_facing_right = false
-	else: 
-		if not is_facing_right:
-			scale.x = 1
-			is_facing_right = true
 
 func _on_InteractionArea_area_exited(area: InteractiveObject) -> void:
 	if area != InteractiveObject: 
