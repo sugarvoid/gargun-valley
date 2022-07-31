@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/interactive_object/plot/plot.gd"
 }, {
+"base": "Area2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://game/projectile/projectile.gd"
+}, {
 "base": "Node",
 "class": "TimeManager",
 "language": "GDScript",
@@ -63,6 +68,7 @@ _global_script_class_icons={
 "Item": "",
 "Player": "",
 "Plot": "",
+"Projectile": "",
 "TimeManager": ""
 }
 

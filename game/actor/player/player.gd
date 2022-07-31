@@ -1,5 +1,6 @@
-extends Actor
 class_name Player
+extends Actor
+
 
 signal is_over_crop
 signal on_play_mode_toggle
@@ -14,6 +15,8 @@ var friction = 0.1
 var acceleration = 0.1
 var mouse_location: Vector2
 
+func get_class() -> String: 
+	return "Player"
 
 func _ready() -> void:
 	self.animation_player.play("idle")
