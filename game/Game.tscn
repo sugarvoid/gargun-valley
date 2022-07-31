@@ -248,28 +248,30 @@ tile_data = PoolIntArray( -131072, 6, 0, -131071, 6, 0, -131070, 6, 0, -131069, 
 position = Vector2( 512, 56 )
 texture = ExtResource( 10 )
 
-[node name="Plots" type="YSort" parent="."]
+[node name="PlayerGarden" type="Node2D" parent="."]
 
-[node name="Plot" parent="Plots" instance=ExtResource( 3 )]
+[node name="Plots" type="YSort" parent="PlayerGarden"]
+
+[node name="Plot3" parent="PlayerGarden/Plots" instance=ExtResource( 3 )]
+position = Vector2( 40, 40 )
+
+[node name="Plot4" parent="PlayerGarden/Plots" instance=ExtResource( 3 )]
+position = Vector2( 24, 56 )
+
+[node name="Plot5" parent="PlayerGarden/Plots" instance=ExtResource( 3 )]
+position = Vector2( 56, 40 )
+
+[node name="Plot6" parent="PlayerGarden/Plots" instance=ExtResource( 3 )]
+position = Vector2( 56, 24 )
+
+[node name="Plot7" parent="PlayerGarden/Plots" instance=ExtResource( 3 )]
+position = Vector2( 40, 24 )
+
+[node name="Plot2" parent="PlayerGarden/Plots" instance=ExtResource( 3 )]
+position = Vector2( 24, 40 )
+
+[node name="Plot" parent="PlayerGarden/Plots" instance=ExtResource( 3 )]
 position = Vector2( 24, 24 )
-
-[node name="Plot" parent="Plots/Plot" instance=ExtResource( 3 )]
-position = Vector2( 16, 0 )
-
-[node name="Plot" parent="Plots/Plot/Plot" instance=ExtResource( 3 )]
-position = Vector2( -16, 16 )
-
-[node name="Plot" parent="Plots/Plot/Plot/Plot" instance=ExtResource( 3 )]
-position = Vector2( 16, 0 )
-
-[node name="Plot2" parent="Plots/Plot/Plot/Plot" instance=ExtResource( 3 )]
-position = Vector2( 0, 16 )
-
-[node name="Plot3" parent="Plots/Plot/Plot/Plot" instance=ExtResource( 3 )]
-position = Vector2( 32, 0 )
-
-[node name="Plot4" parent="Plots/Plot/Plot/Plot" instance=ExtResource( 3 )]
-position = Vector2( 32, -16 )
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
