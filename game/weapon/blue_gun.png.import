@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/New Piskel.png-85dd3195fc0457fdcad57a5deb72f55d.stex"
+path="res://.import/blue_gun.png-5d23483a613e69b7a6859886d2fe5716.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/New Piskel.png"
-dest_files=[ "res://.import/New Piskel.png-85dd3195fc0457fdcad57a5deb72f55d.stex" ]
+source_file="res://game/weapon/blue_gun.png"
+dest_files=[ "res://.import/blue_gun.png-5d23483a613e69b7a6859886d2fe5716.stex" ]
 
 [params]
 
