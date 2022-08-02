@@ -10,7 +10,6 @@ var base_price: float
 func _ready() -> void:
 	pass # Replace with function body.
 
+func _determine_sell_price() -> int:
+	return 4
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
