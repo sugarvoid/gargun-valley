@@ -20,20 +20,8 @@ A farming game with shooting elements.
 
 ### Art
 
-- "Input Prompts Pixel 16×" by [Kenney.nl](https://kenney.itch.io/)
-- "Pixel Platformer" by [Kenney.nl](https://kenney.itch.io/)
-
 ### Fonts
 
-- "Kultro" by Muchammad Wahono Sapto Adi Saputro
-- "Petita" by Manfred Klein
-- "Wash Your Hand" by Syaf Rizal(Khurasan)
-- "Kronika" by Apostrophic Labs
-- "Want Coffee" by Syaf Rizal(Khurasan)
+- "Peaberry Base" by Emho [itch](https://emhuo.itch.io/)
 
 ### Sounds
-
-- "Retro_Coin_04" by Mattias "MATRIXXX" Lahoud [is licensed under CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
-- "Correct Choice" by Unadamlar [is licensed under CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
-- "Old Reactor" by Leszek_Szary [is licensed under CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
-- "Puzzle Pieces" by [Abstraction](http://www.abstractionmusic.com/)
