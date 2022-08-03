@@ -13,3 +13,8 @@ region_rect = Rect2( 490, 2, 14, 8 )
 
 [node name="Muzzle" type="Position2D" parent="."]
 position = Vector2( 11, -3 )
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]

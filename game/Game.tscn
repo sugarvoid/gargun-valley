@@ -112,3 +112,21 @@ position = Vector2( 129, 103 )
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="Tween" type="Tween" parent="CanvasModulate"]
+
+[node name="Enemy" parent="." instance=ExtResource( 12 )]
+position = Vector2( 32, 112 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 128, 40 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 40, 56 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 12 )]
+position = Vector2( 136, 168 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 12 )]
+position = Vector2( 200, 40 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 12 )]
+position = Vector2( 88, 64 )

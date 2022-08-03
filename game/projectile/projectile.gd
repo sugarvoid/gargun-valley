@@ -12,7 +12,7 @@ var speed: float = 100.0
 var life: float = 0.5
 
 func get_class() -> String:
-	return "Bullet"
+	return "Projectile"
 
 func _physics_process(delta):
 	global_position += Vector2(cos(rotation), sin(rotation)) * speed * delta
@@ -22,3 +22,7 @@ func _ready() -> void:
 
 func _on_LifeTimer_timeout() -> void:
 	queue_free()
+
+func made_contact(thing: Node2D) -> void:
+	print(thing)
+	self.queue_free()

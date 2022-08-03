@@ -14,12 +14,16 @@ var can_click: bool = true
 var friction = 0.1
 var acceleration = 0.1
 var mouse_location: Vector2
+var current_weapon: Weapon
+
 
 func get_class() -> String: 
 	return "Player"
 
 func _ready() -> void:
+	self.current_weapon = get_node("Hand").get_child(0)
 	self.animation_player.play("idle")
+	self.current_weapon.connect("give_bullet", self, "_fire")
 
 func _get_input():
 	var input: Vector2 = Vector2(
@@ -32,7 +36,7 @@ func _physics_process(delta):
 	_handle_mode()
 	self.handle_sprite_direction(get_local_mouse_position())
 	$InteractionArea.monitoring = self.can_click
-	$Hand/Weapon.look_at(get_global_mouse_position())
+	self.current_weapon.look_at(get_global_mouse_position())
 	_move(_get_input())
 
 func _move(direction: Vector2) -> void:
@@ -78,11 +82,15 @@ func _on_InteractionArea_area_exited(area: InteractiveObject) -> void:
 	if area.is_in_group('InteractiveObject'):
 		area.turn_off()
 
+func _fire():
+	self.emit_signal("on_weapon_fired_pressed", current_weapon.muzzle)
+
 func shoot() -> void:
 	# get current weapon info
 	# Send signal to bullet factory
-	print('pew pew')
-	self.emit_signal("on_weapon_fired_pressed", $Hand/Weapon/Muzzle)
+	##### print('pew pew')
+	
+	current_weapon.fire()
 
 func _on_ClickTimer_timeout() -> void:
 	self.can_click = true
