@@ -68,6 +68,10 @@ offset = Vector2( 0, 4.861 )
 texture_scale = 0.09
 energy = 0.5
 
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_InteractionArea_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_InteractionArea_area_exited"]
 [connection signal="timeout" from="ClickTimer" to="." method="_on_ClickTimer_timeout"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]

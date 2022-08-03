@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/interface/hud/hud.gd" type="Script" id=1]
 [ext_resource path="res://game/interface/play_mode_icon.png" type="Texture" id=2]
 [ext_resource path="res://game/interface/font/new_dynamicfont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://game/interface/reload.png" type="Texture" id=4]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -15,6 +16,10 @@ margin_bottom = 24.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 3 )
 text = "fdsfdfsdfdss"
+
+[node name="Reload" type="Sprite" parent="Label"]
+position = Vector2( 32, 240 )
+texture = ExtResource( 4 )
 
 [node name="PlayModeIcon" type="Sprite" parent="."]
 position = Vector2( 240, 136 )

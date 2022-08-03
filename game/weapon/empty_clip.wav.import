@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/empty_clip.wav-5728a48b233f7d77b4aaec1f282964ed.sample"
+
+[deps]
+
+source_file="res://game/weapon/empty_clip.wav"
+dest_files=[ "res://.import/empty_clip.wav-5728a48b233f7d77b4aaec1f282964ed.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

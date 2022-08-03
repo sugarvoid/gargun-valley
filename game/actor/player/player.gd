@@ -5,8 +5,11 @@ extends Actor
 signal is_over_crop
 signal on_play_mode_toggle
 signal on_weapon_fired_pressed
+signal started_reloading
+signal done_reloading
 
 onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
+onready var reload_timer: Timer = get_node("ReloadTimer")
 
 var mode: int
 var click_recharge_time: float = 2.0
@@ -15,6 +18,7 @@ var friction = 0.1
 var acceleration = 0.1
 var mouse_location: Vector2
 var current_weapon: Weapon
+var is_reloading: bool 
 
 
 func get_class() -> String: 
@@ -23,7 +27,7 @@ func get_class() -> String:
 func _ready() -> void:
 	self.current_weapon = get_node("Hand").get_child(0)
 	self.animation_player.play("idle")
-	self.current_weapon.connect("give_bullet", self, "_fire")
+	self.current_weapon.connect("give_bullet", self, "_make_bullet")
 
 func _get_input():
 	var input: Vector2 = Vector2(
@@ -46,9 +50,16 @@ func _move(direction: Vector2) -> void:
 		velocity = lerp(velocity, Vector2.ZERO, friction)
 	velocity = move_and_slide(velocity)
 
+func _reload() -> void:
+	if !is_reloading:
+		print('reload started')
+		reload_timer.start(current_weapon.reload_time)
+		is_reloading = true
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("click"):
-		shoot() #move later
+		_pull_trigger() #move later
 		if can_click:
 			can_click = false
 			$ClickTimer.start(self.click_recharge_time)
@@ -82,16 +93,23 @@ func _on_InteractionArea_area_exited(area: InteractiveObject) -> void:
 	if area.is_in_group('InteractiveObject'):
 		area.turn_off()
 
-func _fire():
+func _make_bullet():
 	self.emit_signal("on_weapon_fired_pressed", current_weapon.muzzle)
 
-func shoot() -> void:
-	# get current weapon info
-	# Send signal to bullet factory
-	##### print('pew pew')
-	
-	current_weapon.fire()
+func _pull_trigger() -> void:
+	if current_weapon.bullets_left > 0:
+		# get current weapon info
+		# Send signal to bullet factory
+		##### print('pew pew')
+		current_weapon.fire()
+	else:
+		_reload()
 
 func _on_ClickTimer_timeout() -> void:
 	self.can_click = true
 	$ClickTimer.start(self.click_recharge_time)
+
+func _on_ReloadTimer_timeout() -> void:
+	print('reload done')
+	self.is_reloading = false
+	current_weapon.bullets_left = current_weapon.magazine_size
