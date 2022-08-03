@@ -5,6 +5,7 @@ extends CanvasLayer
 # var a = 2
 # var b = "text"
 onready var time_label: Label = get_node("TimeLabel")
+onready var reload_icon: Sprite = get_node("ReloadIcon")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,3 +21,9 @@ func toggle_icon() -> void:
 
 func update_time(time: String) -> void:
 	$TimeLabel.text = time
+	
+func show_reload_icon() -> void:
+	reload_icon.visible = true
+	
+func hide_reload_icon() -> void:
+	reload_icon.visible = false

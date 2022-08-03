@@ -52,7 +52,7 @@ func _move(direction: Vector2) -> void:
 
 func _reload() -> void:
 	if !is_reloading:
-		print('reload started')
+		emit_signal("started_reloading")
 		reload_timer.start(current_weapon.reload_time)
 		is_reloading = true
 
@@ -110,6 +110,6 @@ func _on_ClickTimer_timeout() -> void:
 	$ClickTimer.start(self.click_recharge_time)
 
 func _on_ReloadTimer_timeout() -> void:
-	print('reload done')
+	emit_signal("done_reloading")
 	self.is_reloading = false
 	current_weapon.bullets_left = current_weapon.magazine_size

@@ -1,7 +1,8 @@
 extends Actor
 class_name Enemy
 
-
+func _ready() -> void:
+	self.health = 10
 
 func _process(_delta: float) -> void:
 	pass

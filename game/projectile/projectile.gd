@@ -25,4 +25,5 @@ func _on_LifeTimer_timeout() -> void:
 
 func made_contact(thing: Node2D) -> void:
 	print(thing)
+	thing.take_damage(2)
 	self.queue_free()
