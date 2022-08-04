@@ -10,6 +10,7 @@ signal done_reloading
 
 onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 onready var reload_timer: Timer = get_node("ReloadTimer")
+onready var player_light: Light2D = get_node("Light")
 
 var mode: int
 var click_recharge_time: float = 2.0
@@ -69,7 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Global.toggle_player_mode()
 	
 	if event.is_action_released("light_toggle"):
-		$Light.enabled = 1 - int($Light.enabled)
+		player_light.enabled = 1 - int(player_light.enabled)
 
 func _on_InteractionArea_area_entered(area: InteractiveObject) -> void:
 	if area != InteractiveObject: 
