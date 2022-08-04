@@ -17,7 +17,8 @@ const day_color: Color = Color.white
 func _ready() -> void:
 	self.player.connect("on_play_mode_toggle", self, "_toggle_mode_icon")
 	self.player.connect("on_weapon_fired_pressed", self, "_make_bullet")
-	self.player.connect("request_plot_placement", self.garden_manager, "place_plot")
+	#####self.player.connect("request_plot_placement", self.garden_manager, "place_plot")
+	self.player.connect("request_plot_placement", self, "_check_tile")
 	self.player.connect("started_reloading", self, "_player_reloading")	
 	self.player.connect("done_reloading", self, "_player_done_reloading")
 	self.time_manager.connect("_on_the_minunte", self.hud, "update_time")
@@ -45,4 +46,10 @@ func _player_done_reloading() -> void:
 	hud.hide_reload_icon()
 
 func _check_tile(pos: Vector2) -> void:
-	print($TileMap3.get_cellv(pos))
+	var tile = $TileMap3.world_to_map(pos)
+	var tile_ID = $TileMap3.get_cellv(tile)
+	match tile_ID:
+		0: print("grass")
+		1: 
+			print("plot")
+			self.garden_manager.place_plot(pos)

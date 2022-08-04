@@ -1,13 +1,15 @@
 class_name GardenManager
 extends Node2D
 
-onready var p_Plot: PackedScene = preload("res://game/interactive_object/plot/Plot.tscn")
+onready var p_Crop: PackedScene = preload("res://game/item/crop/Crop.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 func place_plot(pos: Vector2) -> void:
-	var new_plot = p_Plot.instance()
+	var new_plot = p_Crop.instance()
+	
 	new_plot.position = pos.snapped(Vector2(16, 16))
+	
 	add_child(new_plot)
 
 # Called when the node enters the scene tree for the first time.
