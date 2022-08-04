@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/interactive_object/InteractiveObject.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/interactive_object/plot/plot.gd" type="Script" id=2]
-[ext_resource path="res://game/item/crop/plant.png" type="Texture" id=3]
+[ext_resource path="res://test-grass.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.5, 5 )
@@ -12,8 +12,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-vframes = 5
-frame = 4
+hframes = 2
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 0, 0 )
@@ -22,5 +21,7 @@ position = Vector2( 0, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterHotBox" index="0"]
 shape = SubResource( 1 )
+
+[node name="CropSprite" type="Sprite" parent="." index="3"]
 
 [connection signal="area_entered" from="WaterHotBox" to="." method="_on_WaterHotBox_area_entered"]

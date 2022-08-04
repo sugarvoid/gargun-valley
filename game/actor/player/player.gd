@@ -7,6 +7,7 @@ signal on_play_mode_toggle
 signal on_weapon_fired_pressed
 signal started_reloading
 signal done_reloading
+signal request_plot_placement
 
 onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 onready var reload_timer: Timer = get_node("ReloadTimer")
@@ -70,7 +71,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		Global.toggle_player_mode()
 	
 	if event.is_action_released("light_toggle"):
-		player_light.enabled = 1 - int(player_light.enabled)
+		#TODO: give 'make plot' its own input event
+		_create_plot()
+		########## player_light.enabled = 1 - int(player_light.enabled)
 
 func _on_InteractionArea_area_entered(area: InteractiveObject) -> void:
 	if area != InteractiveObject: 
@@ -114,3 +117,7 @@ func _on_ReloadTimer_timeout() -> void:
 	emit_signal("done_reloading")
 	self.is_reloading = false
 	current_weapon.bullets_left = current_weapon.magazine_size
+
+func _create_plot() -> void:
+	var pos: Vector2 = get_global_mouse_position()
+	emit_signal("request_plot_placement", pos)
