@@ -69,6 +69,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("switch_mode"):
 		emit_signal("on_play_mode_toggle")
 		Global.toggle_player_mode()
+	if event.is_action_released("cycle_hand"):
+		self._cycle_hand()
 	
 	if event.is_action_released("light_toggle"):
 		#TODO: give 'make plot' its own input event
@@ -121,3 +123,15 @@ func _on_ReloadTimer_timeout() -> void:
 func _create_plot() -> void:
 	var pos: Vector2 = get_global_mouse_position()
 	emit_signal("request_plot_placement", pos)
+
+func _cycle_hand() -> void:
+	var current_hand = $Hand.get_child(0)
+	$Hand.remove_child($Hand.get_child(0))
+	$Backpack.add_child(current_hand)
+	
+	
+	var top_of_pack = $Backpack.get_child(0)
+	$Backpack.remove_child($Backpack.get_child(0))
+	$Hand.add_child(top_of_pack)
+	
+	
