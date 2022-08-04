@@ -46,10 +46,13 @@ func _player_done_reloading() -> void:
 	hud.hide_reload_icon()
 
 func _check_tile(pos: Vector2) -> void:
-	var tile = $TileMap3.world_to_map(pos)
-	var tile_ID = $TileMap3.get_cellv(tile)
+	var tile_cordinates = $TileMap3.world_to_map(pos)
+	var tile_ID = $TileMap3.get_cellv(tile_cordinates)
+	var sprite_placement =  $TileMap3.map_to_world(tile_cordinates)
+	garden_manager.add_to_used_plots(tile_cordinates) #Add to used plots
+	
 	match tile_ID:
 		0: print("grass")
 		1: 
 			print("plot")
-			self.garden_manager.place_plot(pos)
+			self.garden_manager.place_plot(sprite_placement.snapped(Vector2(16,16)))
