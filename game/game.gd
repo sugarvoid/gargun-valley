@@ -32,10 +32,7 @@ func _unhandled_input(event):
 
 func _make_bullet(current_weapon: Weapon) -> void:
 	var bullet = p_Projectile.instance()
-	print('bullet made')
-	
 	bullet.global_transform = current_weapon.muzzle.global_transform
-
 	bullet_manager.add_child(bullet)
 	bullet.set_projectile_properties(current_weapon.weapon_ID)
 

@@ -2,10 +2,8 @@ extends Area2D
 class_name InteractiveObject
 
 
-
 var is_clickable: bool
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	turn_off()
 

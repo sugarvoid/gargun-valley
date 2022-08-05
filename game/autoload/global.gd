@@ -19,9 +19,7 @@ const PROJECTILE_IDS: Dictionary = {
 }
 
 
-
 func toggle_player_mode() -> void:
-	print('togle')
 	if player_mode == PLAY_MODES.FARMER:
 		player_mode = PLAY_MODES.SHOOTER
 		return

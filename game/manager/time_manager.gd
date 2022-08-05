@@ -7,7 +7,6 @@ signal _on_the_week
 signal _on_the_minunte
 
 
-
 onready var timer: Timer = get_node("Timer")
 
 # One in-game min = ten second 
@@ -19,7 +18,6 @@ var day: int = 1
 var month: int = 1
 var year: int = 1999
 var current_day_of_week: int = 0
-
 var is_paused: bool = false
 
 enum PHASES {
@@ -111,13 +109,10 @@ func get_date() -> String:
 
 func _init():
 	pass
-	
 
-	
 func set_date():
 	pass
-	
-	
+
 func add_days(days: int):
 	self.day += days
 

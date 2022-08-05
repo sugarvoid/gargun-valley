@@ -52,20 +52,17 @@ func _move(direction: Vector2) -> void:
 		velocity = lerp(velocity, direction.normalized() * move_speed, acceleration)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, friction)
-	
 	velocity = move_and_slide(velocity)
 
 func _update_current_weapon() -> void:
 	print(hand.get_child(0))
 	self.current_weapon = hand.get_child(0)
-	
 
 func _reload() -> void:
 	if !is_reloading:
 		emit_signal("started_reloading")
 		reload_timer.start(current_weapon.reload_time)
 		is_reloading = true
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("left_click"):
@@ -114,7 +111,6 @@ func _on_InteractionArea_area_exited(area: InteractiveObject) -> void:
 		area.turn_off()
 
 func _make_bullet():
-	print('player _makebullt')
 	self.emit_signal("on_weapon_fired_pressed", current_weapon)
 
 func _pull_trigger() -> void:
@@ -143,11 +139,9 @@ func _cycle_hand() -> void:
 		var current_hand = hand.get_child(0)
 		hand.remove_child(hand.get_child(0))
 		backpack.add_child(current_hand)
-	
 		var top_of_pack = backpack.get_child(0)
 		backpack.remove_child(backpack.get_child(0))
 		hand.add_child(top_of_pack)
-		
 		_update_current_weapon()
 	else:
 		return

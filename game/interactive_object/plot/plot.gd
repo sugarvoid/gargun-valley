@@ -9,7 +9,6 @@ export var days_growing: int
 
 func _do_action() -> void:
 	print("I have been alive %s days." % self.days_growing)
-	
 
 
 func _on_WaterHotBox_area_entered(area):

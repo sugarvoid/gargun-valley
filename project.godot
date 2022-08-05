@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/garden_manager.gd"
 }, {
+"base": "CanvasLayer",
+"class": "HUD",
+"language": "GDScript",
+"path": "res://game/interface/hud/hud.gd"
+}, {
 "base": "Area2D",
 "class": "InteractiveObject",
 "language": "GDScript",
@@ -80,6 +85,7 @@ _global_script_class_icons={
 "DateTime": "",
 "Enemy": "",
 "GardenManager": "",
+"HUD": "",
 "InteractiveObject": "",
 "Item": "",
 "Player": "",
