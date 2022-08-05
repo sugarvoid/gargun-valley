@@ -21,7 +21,7 @@ func _do_action() -> void:
 	assert(false, 'override tis fuction')
 
 func _on_GameObject_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-		if event.is_action_released("click"):
+		if event.is_action_released("left_click"):
 			if self.is_clickable:
 				_do_action()
 			else:

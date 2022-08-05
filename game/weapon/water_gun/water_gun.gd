@@ -1,5 +1,7 @@
 extends Weapon
 
+func _init():
+	self.weapon_ID = Global.WEAPON_IDS.water_gun
 
 func _ready() -> void:
 	bullet_speed = 100

@@ -31,7 +31,7 @@ func get_class() -> String:
 func _ready() -> void:
 	_update_current_weapon()
 	self.animation_player.play("idle")
-	self.current_weapon.connect("give_bullet", self, "_make_bullet")
+	$Backpack/WaterGun.connect("give_bullet", self, "_make_bullet")
 
 func _get_input():
 	var input: Vector2 = Vector2(
@@ -52,11 +52,13 @@ func _move(direction: Vector2) -> void:
 		velocity = lerp(velocity, direction.normalized() * move_speed, acceleration)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, friction)
+	
 	velocity = move_and_slide(velocity)
 
 func _update_current_weapon() -> void:
 	print(hand.get_child(0))
 	self.current_weapon = hand.get_child(0)
+	
 
 func _reload() -> void:
 	if !is_reloading:
@@ -66,22 +68,28 @@ func _reload() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("click"):
-		_pull_trigger() #move later
+	if event.is_action_released("left_click"):
+		print(current_weapon.weapon_ID)
+		if current_weapon.weapon_ID == Global.WEAPON_IDS.shovel_gun:
+			_create_plot()
+		elif current_weapon.weapon_ID == Global.WEAPON_IDS.water_gun:
+			_pull_trigger() #move later
 		if can_click:
 			can_click = false
 			$ClickTimer.start(self.click_recharge_time)
 	
+	if event.is_action_released("right_click"):
+		current_weapon.secondary_action()
+		
 	if event.is_action_released("switch_mode"):
 		emit_signal("on_play_mode_toggle")
 		Global.toggle_player_mode()
+	
 	if event.is_action_released("cycle_hand"):
 		self._cycle_hand()
 	
 	if event.is_action_released("light_toggle"):
-		#TODO: give 'make plot' its own input event
-		_create_plot()
-		########## player_light.enabled = 1 - int(player_light.enabled)
+		player_light.enabled = 1 - int(player_light.enabled)
 
 func _on_InteractionArea_area_entered(area: InteractiveObject) -> void:
 	if area != InteractiveObject: 
@@ -106,13 +114,13 @@ func _on_InteractionArea_area_exited(area: InteractiveObject) -> void:
 		area.turn_off()
 
 func _make_bullet():
-	self.emit_signal("on_weapon_fired_pressed", current_weapon.muzzle)
+	print('player _makebullt')
+	self.emit_signal("on_weapon_fired_pressed", current_weapon)
 
 func _pull_trigger() -> void:
 	if current_weapon.bullets_left > 0:
 		# get current weapon info
 		# Send signal to bullet factory
-		##### print('pew pew')
 		current_weapon.fire()
 	else:
 		_reload()

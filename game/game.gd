@@ -30,10 +30,14 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 
-func _make_bullet(muzzle: Node2D) -> void:
+func _make_bullet(current_weapon: Weapon) -> void:
 	var bullet = p_Projectile.instance()
-	bullet.global_transform = muzzle.global_transform
+	print('bullet made')
+	
+	bullet.global_transform = current_weapon.muzzle.global_transform
+
 	bullet_manager.add_child(bullet)
+	bullet.set_projectile_properties(current_weapon.weapon_ID)
 
 func _toggle_mode_icon():
 	hud.toggle_icon()
