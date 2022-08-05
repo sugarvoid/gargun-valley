@@ -55,7 +55,8 @@ func _move(direction: Vector2) -> void:
 	velocity = move_and_slide(velocity)
 
 func _update_current_weapon() -> void:
-	self.current_weapon = get_node("Hand").get_child(0)
+	print(hand.get_child(0))
+	self.current_weapon = hand.get_child(0)
 
 func _reload() -> void:
 	if !is_reloading:

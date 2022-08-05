@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blue_gun.png-5d23483a613e69b7a6859886d2fe5716.stex"
+path="res://.import/shovel_gun.png-a17686e8e1bfdda6f55ca68c1d06682f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/weapon/blue_gun.png"
-dest_files=[ "res://.import/blue_gun.png-5d23483a613e69b7a6859886d2fe5716.stex" ]
+source_file="res://game/weapon/shovel_gun/shovel_gun.png"
+dest_files=[ "res://.import/shovel_gun.png-a17686e8e1bfdda6f55ca68c1d06682f.stex" ]
 
 [params]
 

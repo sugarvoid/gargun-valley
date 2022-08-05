@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/light_sword.png-7cf1747c36ec536eda0213c3b839acc2.stex"
+path="res://.import/light_sword.png-aee171e8b74ec4a053cd00de2e022b43.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/weapon/light_sword.png"
-dest_files=[ "res://.import/light_sword.png-7cf1747c36ec536eda0213c3b839acc2.stex" ]
+source_file="res://game/weapon/light_sword/light_sword.png"
+dest_files=[ "res://.import/light_sword.png-aee171e8b74ec4a053cd00de2e022b43.stex" ]
 
 [params]
 
