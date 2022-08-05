@@ -4,8 +4,11 @@ extends Node2D
 onready var p_Projectile: PackedScene = preload("res://game/projectile/Projectile.tscn")
 
 onready var hud: CanvasLayer = get_node("HUD")
+
 onready var time_manager: TimeManager = get_node("TimeManager")
 onready var garden_manager: GardenManager = get_node("GardenManager")
+onready var bullet_manager = get_node("BulletManager")
+
 onready var player: Player = get_node("Player")
 
 const dawn_color: Color = Color("141d35")
@@ -30,7 +33,7 @@ func _unhandled_input(event):
 func _make_bullet(muzzle: Node2D) -> void:
 	var bullet = p_Projectile.instance()
 	bullet.global_transform = muzzle.global_transform
-	$BulletContainer.add_child(bullet)
+	bullet_manager.add_child(bullet)
 
 func _toggle_mode_icon():
 	hud.toggle_icon()
@@ -49,7 +52,6 @@ func _check_tile(pos: Vector2) -> void:
 	var tile_cordinates = $TileMap3.world_to_map(pos)
 	var tile_ID = $TileMap3.get_cellv(tile_cordinates)
 	var sprite_placement =  $TileMap3.map_to_world(tile_cordinates)
-
 	
 	match tile_ID:
 		0: 

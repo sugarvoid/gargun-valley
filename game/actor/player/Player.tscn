@@ -12,8 +12,9 @@ height = 8.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
-length = 0.5
+length = 0.4
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -21,10 +22,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 4, 5, 6, 7, 5 ]
 }
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -45,6 +46,7 @@ anims/idle = SubResource( 2 )
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 3
+frame = 5
 
 [node name="Hand" type="Position2D" parent="."]
 position = Vector2( 1.956, 8.324 )

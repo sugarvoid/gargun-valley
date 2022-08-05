@@ -24,7 +24,6 @@ func _ready() -> void:
 	pass
 	#_set_stats()
 
-
 func fire() -> void:
 	print(self.bullets_left)
 	if bullets_left > 0:

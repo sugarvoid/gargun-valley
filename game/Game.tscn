@@ -55,40 +55,40 @@ script = ExtResource( 4 )
 
 [node name="Plots" type="YSort" parent="GardenManager"]
 
-[node name="EnemyContainer" type="Node2D" parent="."]
+[node name="EnemyManager" type="Node2D" parent="."]
 visible = false
 
-[node name="Enemy" parent="EnemyContainer" instance=ExtResource( 12 )]
+[node name="Enemy" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 39, 166 )
 
-[node name="Enemy3" parent="EnemyContainer" instance=ExtResource( 12 )]
+[node name="Enemy3" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 197, 143 )
 
-[node name="Enemy4" parent="EnemyContainer" instance=ExtResource( 12 )]
+[node name="Enemy4" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 205, 71 )
 
-[node name="Enemy2" parent="EnemyContainer" instance=ExtResource( 12 )]
+[node name="Enemy2" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 213, 87 )
 
-[node name="Enemy5" parent="EnemyContainer" instance=ExtResource( 12 )]
+[node name="Enemy5" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 32, 112 )
 
-[node name="Enemy6" parent="EnemyContainer" instance=ExtResource( 12 )]
+[node name="Enemy6" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 128, 40 )
 
-[node name="Enemy7" parent="EnemyContainer" instance=ExtResource( 12 )]
+[node name="Enemy7" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 40, 56 )
 
-[node name="Enemy8" parent="EnemyContainer" instance=ExtResource( 12 )]
+[node name="Enemy8" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 136, 168 )
 
-[node name="Enemy9" parent="EnemyContainer" instance=ExtResource( 12 )]
+[node name="Enemy9" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 200, 40 )
 
-[node name="Enemy10" parent="EnemyContainer" instance=ExtResource( 12 )]
+[node name="Enemy10" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 88, 64 )
 
-[node name="BulletContainer" type="Node2D" parent="."]
+[node name="BulletManager" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 129, 103 )

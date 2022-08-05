@@ -12,6 +12,8 @@ signal request_plot_placement
 onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 onready var reload_timer: Timer = get_node("ReloadTimer")
 onready var player_light: Light2D = get_node("Light")
+onready var hand = get_node("Hand")
+onready var backpack = get_node("Backpack")
 
 var mode: int
 var click_recharge_time: float = 2.0
@@ -27,7 +29,7 @@ func get_class() -> String:
 	return "Player"
 
 func _ready() -> void:
-	self.current_weapon = get_node("Hand").get_child(0)
+	_update_current_weapon()
 	self.animation_player.play("idle")
 	self.current_weapon.connect("give_bullet", self, "_make_bullet")
 
@@ -51,6 +53,9 @@ func _move(direction: Vector2) -> void:
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, friction)
 	velocity = move_and_slide(velocity)
+
+func _update_current_weapon() -> void:
+	self.current_weapon = get_node("Hand").get_child(0)
 
 func _reload() -> void:
 	if !is_reloading:
@@ -125,13 +130,16 @@ func _create_plot() -> void:
 	emit_signal("request_plot_placement", pos)
 
 func _cycle_hand() -> void:
-	var current_hand = $Hand.get_child(0)
-	$Hand.remove_child($Hand.get_child(0))
-	$Backpack.add_child(current_hand)
+	if backpack.get_child_count() > 0:
+		var current_hand = hand.get_child(0)
+		hand.remove_child(hand.get_child(0))
+		backpack.add_child(current_hand)
 	
-	
-	var top_of_pack = $Backpack.get_child(0)
-	$Backpack.remove_child($Backpack.get_child(0))
-	$Hand.add_child(top_of_pack)
-	
+		var top_of_pack = backpack.get_child(0)
+		backpack.remove_child(backpack.get_child(0))
+		hand.add_child(top_of_pack)
+		
+		_update_current_weapon()
+	else:
+		return
 	
