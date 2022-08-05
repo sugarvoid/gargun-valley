@@ -72,6 +72,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			_create_plot()
 		elif current_weapon.weapon_ID == Global.WEAPON_IDS.water_gun:
 			_pull_trigger() #move later
+		elif current_weapon.weapon_ID == Global.WEAPON_IDS.hand_gun:
+			_pull_trigger() #move later
+			
+		
 		if can_click:
 			can_click = false
 			$ClickTimer.start(self.click_recharge_time)

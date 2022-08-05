@@ -22,6 +22,10 @@ func set_projectile_properties(id: String) -> void:
 		Global.WEAPON_IDS.water_gun:
 			self.sprite.frame = 0
 			self.projectile_ID = Global.PROJECTILE_IDS.water_bullet
+		Global.WEAPON_IDS.hand_gun:
+			print('damage bullet set up')
+			self.sprite.frame = 1
+			self.projectile_ID = Global.PROJECTILE_IDS.player_damage_bullet
 
 func _physics_process(delta):
 	global_position += Vector2(cos(rotation), sin(rotation)) * speed * delta

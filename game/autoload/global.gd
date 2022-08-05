@@ -9,7 +9,8 @@ enum PLAY_MODES {
 
 const WEAPON_IDS: Dictionary = {
 	"shovel_gun" : "Farm-01",
-	"water_gun": "Farm-02"
+	"water_gun": "Farm-02",
+	"hand_gun": "Combat-01",
 }
 
 const PROJECTILE_IDS: Dictionary = {
