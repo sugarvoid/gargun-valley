@@ -10,3 +10,6 @@ func primary_action() -> void:
 func secondary_action() -> void:
 	pass
 	
+
+func play_dig_anmi() -> void:
+	$AnimationPlayer.play("dig")

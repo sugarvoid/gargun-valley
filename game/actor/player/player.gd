@@ -68,6 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("left_click"):
 		print(current_weapon.weapon_ID)
 		if current_weapon.weapon_ID == Global.WEAPON_IDS.shovel_gun:
+			current_weapon.play_dig_anmi()
 			_create_plot()
 		elif current_weapon.weapon_ID == Global.WEAPON_IDS.water_gun:
 			_pull_trigger() #move later
