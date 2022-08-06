@@ -19,7 +19,7 @@ const day_color: Color = Color.white
 
 func _ready() -> void:
 	self.player.connect("on_play_mode_toggle", self, "_toggle_mode_icon")
-	self.player.connect("on_weapon_fired_pressed", self, "_make_bullet")
+	self.player.connect("on_weapon_fired_pressed", self, "_add_bullet_to_screen")
 	#####self.player.connect("request_plot_placement", self.garden_manager, "place_plot")
 	self.player.connect("request_plot_placement", self, "_check_tile")
 	self.player.connect("started_reloading", self, "_player_reloading")	
@@ -30,11 +30,12 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 
-func _make_bullet(current_weapon: Weapon) -> void:
+func _add_bullet_to_screen(current_weapon: Weapon) -> void:
+	print('MADE IT TO GAME SCRIPT')
 	var bullet = p_Projectile.instance()
 	bullet.global_transform = current_weapon.muzzle.global_transform
 	bullet_manager.add_child(bullet)
-	bullet.set_projectile_properties(current_weapon.weapon_ID)
+	bullet.set_projectile_properties(current_weapon)
 
 func _toggle_mode_icon():
 	hud.toggle_icon()

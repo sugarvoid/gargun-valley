@@ -13,6 +13,7 @@ A farming game with shooting elements.
 - **Move** [A], [S], [W], [D]
 - **Aim** Mouse
 - **Shoot** Left Mouse Click
+- **Change Waepon** Mouse Scroll Wheel
 - **Light Toogle** [R]
 - **Pause** Esc
 

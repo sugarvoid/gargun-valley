@@ -56,7 +56,6 @@ script = ExtResource( 4 )
 [node name="Plots" type="YSort" parent="GardenManager"]
 
 [node name="EnemyManager" type="Node2D" parent="."]
-visible = false
 
 [node name="Enemy" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 39, 166 )

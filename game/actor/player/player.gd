@@ -13,7 +13,11 @@ onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 onready var reload_timer: Timer = get_node("ReloadTimer")
 onready var player_light: Light2D = get_node("Light")
 onready var hand = get_node("Hand")
+
 onready var backpack = get_node("Backpack")
+onready var shovel_gun = get_node("%ShovelGun")
+onready var water_gun = get_node("%WaterGun")
+onready var hand_gun = get_node("%HandGun")
 
 var mode: int
 var click_recharge_time: float = 2.0
@@ -31,7 +35,8 @@ func get_class() -> String:
 func _ready() -> void:
 	_update_current_weapon()
 	self.animation_player.play("idle")
-	$Backpack/WaterGun.connect("give_bullet", self, "_make_bullet")
+	water_gun.connect("can_shoot_bullet", self, "_make_bullet")
+	hand_gun.connect("can_shoot_bullet", self, "_make_bullet")
 
 func _get_input():
 	var input: Vector2 = Vector2(
@@ -66,7 +71,6 @@ func _reload() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("left_click"):
-		print(current_weapon.weapon_ID)
 		if current_weapon.weapon_ID == Global.WEAPON_IDS.shovel_gun:
 			current_weapon.play_dig_anmi()
 			_create_plot()
@@ -116,13 +120,15 @@ func _on_InteractionArea_area_exited(area: InteractiveObject) -> void:
 		area.turn_off()
 
 func _make_bullet():
+	print('player make bullet')
 	self.emit_signal("on_weapon_fired_pressed", current_weapon)
+	
 
 func _pull_trigger() -> void:
 	if current_weapon.bullets_left > 0:
 		# get current weapon info
 		# Send signal to bullet factory
-		current_weapon.fire()
+		current_weapon.fire_bullet()
 	else:
 		_reload()
 
