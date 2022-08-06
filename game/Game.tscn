@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/actor/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/interface/hud/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://tent.png" type="Texture" id=3]
 [ext_resource path="res://game/garden_manager.gd" type="Script" id=4]
 [ext_resource path="res://game/game.gd" type="Script" id=5]
 [ext_resource path="res://game/manager/TimeManager.tscn" type="PackedScene" id=11]
@@ -55,7 +56,12 @@ script = ExtResource( 4 )
 
 [node name="Plots" type="YSort" parent="GardenManager"]
 
+[node name="Tent" type="Sprite" parent="."]
+position = Vector2( 90, 15 )
+texture = ExtResource( 3 )
+
 [node name="EnemyManager" type="Node2D" parent="."]
+visible = false
 
 [node name="Enemy" parent="EnemyManager" instance=ExtResource( 12 )]
 position = Vector2( 39, 166 )
@@ -85,7 +91,7 @@ position = Vector2( 136, 168 )
 position = Vector2( 200, 40 )
 
 [node name="Enemy10" parent="EnemyManager" instance=ExtResource( 12 )]
-position = Vector2( 88, 64 )
+position = Vector2( 85, 71 )
 
 [node name="BulletManager" type="Node2D" parent="."]
 
