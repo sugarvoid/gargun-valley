@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/actor/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/interface/hud/HUD.tscn" type="PackedScene" id=2]
-[ext_resource path="res://tent.png" type="Texture" id=3]
+[ext_resource path="res://game/building/Tent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/garden_manager.gd" type="Script" id=4]
 [ext_resource path="res://game/game.gd" type="Script" id=5]
 [ext_resource path="res://game/manager/TimeManager.tscn" type="PackedScene" id=11]
@@ -56,9 +56,8 @@ script = ExtResource( 4 )
 
 [node name="Plots" type="YSort" parent="GardenManager"]
 
-[node name="Tent" type="Sprite" parent="."]
-position = Vector2( 90, 15 )
-texture = ExtResource( 3 )
+[node name="Tent" parent="." instance=ExtResource( 3 )]
+position = Vector2( 96, 8 )
 
 [node name="EnemyManager" type="Node2D" parent="."]
 visible = false
