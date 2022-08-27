@@ -32,15 +32,12 @@ var magazine_size: int
 var bullets_left: int
 var bullet_ID: String
 
-func _ready() -> void:
-	pass
-	#_set_stats()
 
 func primary_action() -> void:
-	pass
+	assert(false, "Overide method")
 	
 func secondary_action() -> void:
-	pass
+	assert(false, "Overide method")
 
 func fire_bullet() -> void:
 	if bullets_left > 0:

@@ -3,6 +3,7 @@ class_name InteractiveObject
 
 
 var is_clickable: bool
+# TODO: replace varible with can_interact
 
 func _ready() -> void:
 	turn_off()
