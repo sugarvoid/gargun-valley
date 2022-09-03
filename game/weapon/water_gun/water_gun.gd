@@ -3,7 +3,7 @@ extends Weapon
 
 func _init():
 	self.weapon_ID = Global.WEAPON_IDS.water_gun
-	bullet_speed = 80
+	bullet_speed = 200
 	bullet_life = 2.5
 	reload_time = 3.0
 	magazine_size = 15

@@ -9,7 +9,6 @@ signal started_reloading
 signal done_reloading
 signal request_plot_placement
 
-onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 onready var reload_timer: Timer = get_node("ReloadTimer")
 onready var player_light: Light2D = get_node("Light")
 onready var hand = get_node("Hand")
@@ -23,7 +22,7 @@ var mode: int
 var click_recharge_time: float = 2.0
 var can_click: bool = true
 var friction = 0.1
-var acceleration = 0.1
+var acceleration = 0.5
 var mouse_location: Vector2
 var current_weapon: Weapon
 var is_reloading: bool 
@@ -34,7 +33,6 @@ func get_class() -> String:
 
 func _ready() -> void:
 	_update_current_weapon()
-	self.animation_player.play("idle")
 	water_gun.connect("can_shoot_bullet", self, "_make_bullet")
 	hand_gun.connect("can_shoot_bullet", self, "_make_bullet")
 

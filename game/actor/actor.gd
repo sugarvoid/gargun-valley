@@ -2,7 +2,7 @@ extends KinematicBody2D
 class_name Actor
 
 
-var move_speed: float = 65
+var move_speed: float = 100
 var velocity = Vector2.ZERO
 var target: Actor
 var is_facing_right: bool = true
