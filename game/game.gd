@@ -56,9 +56,9 @@ func _check_tile(pos: Vector2) -> void:
 	var sprite_placement =  $TileMap3.map_to_world(tile_cordinates)
 	
 	match tile_ID:
-		0: 
+		2: 
 			print("grass")
-			self.garden_manager.place_plot(sprite_placement.snapped(Vector2(16,16)))
-		1: 
+			self.garden_manager.place_plot(sprite_placement.snapped(Vector2(32,32)))
+		3: 
 			print("plot")
 			
