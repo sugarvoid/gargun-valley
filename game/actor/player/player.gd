@@ -47,7 +47,12 @@ func _physics_process(delta):
 	_handle_mode()
 	self.handle_sprite_direction(get_local_mouse_position())
 	$InteractionArea.monitoring = self.can_click
-	self.current_weapon.look_at(get_global_mouse_position())
+	3####### !!!!!! self.current_weapon.look_at(get_global_mouse_position())
+	###
+	var dir = current_weapon.get_angle_to(get_global_mouse_position())
+	var xxx = lerp_angle(0, dir, 0.4)
+	current_weapon.rotate(xxx)
+	###
 	_move(_get_input())
 
 func _move(direction: Vector2) -> void:
